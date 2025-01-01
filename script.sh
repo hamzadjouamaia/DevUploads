@@ -7,7 +7,7 @@ email=$(echo "$response" | awk -F 'email:' '{print $2}' | cut -d ',' -f 1 | tr -
 storage_used=$(echo "$response" | awk -F 'storage_used:' '{print $2}' | cut -d ',' -f 1 | tr -d ' ')
 storage_used_gb=$(echo "$storage_used" | awk '{print $1/1024/1024/1024}')
 balance=$(echo "$response" | awk -F 'balance:' '{print $2}' | cut -d ',' -f 1 | tr -d ' ')
-curl -o $prefix/bin/devuploads.sh "https://devuploads.com/upload.sh"
+curl -s -o $prefix/bin/devuploads.sh "https://devuploads.com/upload.sh"
 echo ""
 echo " [X] Email: $email"
 echo " [X] Storage Used: $storage_used_gb GB"
