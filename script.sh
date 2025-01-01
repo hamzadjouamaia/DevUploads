@@ -1,6 +1,6 @@
 #!/bin/bash
 prefix="${PREFIX}"
-read -p "Enter Your DevUploads API Key: " api
+read -s -p "Enter Your DevUploads API Key: " api
 response=$(curl -s "https://devuploads.com/api/account/info?key=$api")
 response=$(echo "$response" | sed 's/"//g')
 email=$(echo "$response" | awk -F 'email:' '{print $2}' | cut -d ',' -f 1 | tr -d ' ')
