@@ -9,6 +9,7 @@ storage_used_gb=$(echo "$storage_used" | awk '{print $1/1024/1024/1024}')
 balance=$(echo "$response" | awk -F 'balance:' '{print $2}' | cut -d ',' -f 1 | tr -d ' ')
 curl -sL -o "$prefix/bin/upload.sh" "https://devuploads.com/upload.sh" >/dev/null 2>&1 
 echo ""
+echo ""
 echo " [X] Email: $email"
 echo " [X] Storage Used: $storage_used_gb GB"
 echo " [X] Balance: $balance$"
@@ -17,4 +18,6 @@ echo -e '$PREFIX/bin/upload.sh -f $@ -k $api'> $prefix/bin/upload
 command="$prefix/bin/upload.sh -f \"\$@\" -k $api"
 echo -e $command > $prefix/bin/upload
 chmod 777 $prefix/bin/upload $prefix/bin/upload.sh
+echo ""
 echo -e "\033[32mDevUploads Script is Ready To Use Enter upload followed by File Path\033[0m"
+echo ""
